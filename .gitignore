@@ -127,3 +127,35 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor Files
+*~
+*.swp
+
+# IntelliJ specific files/directories
+out
+.idea
+*.ipr
+*.iws
+*.iml
+atlassian-ide-plugin.xml
+
+# Eclipse specific files/directories
+.classpath
+.project
+.settings
+.metadata
+bin/
+
+# NetBeans specific files/directories
+.nbattrs
+
+# database
+db/*
+!db/.gitkeep
