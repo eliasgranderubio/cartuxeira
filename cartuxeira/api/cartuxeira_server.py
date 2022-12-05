@@ -1,6 +1,7 @@
 import json
 from flask import Flask
 from api.blacklist.blacklist import bl_api
+from api.riskEval.risk_eval import risk_api
 from api.internal.internal_server import InternalServer
 
 
@@ -12,6 +13,7 @@ class CartuxeiraServer:
 
     app = Flask(__name__)
     app.register_blueprint(bl_api)
+    app.register_blueprint(risk_api)
 
     # -- Public methods
 
