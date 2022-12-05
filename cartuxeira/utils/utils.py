@@ -1,12 +1,18 @@
 import re
 
 
-# Regex definition
-regex = re.compile(r"([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\[[\t -Z^-~]*])")
-
-
 # -- Utils
 
 # Check if email is valid
 def is_valid_email(email):
-    return re.fullmatch(regex, email)
+    email_regex = re.compile(
+        r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+    regex_validation = re.fullmatch(email_regex, email)
+    return regex_validation is not None
+
+
+# Check if domain is valid
+def is_valid_domain(domain):
+    domain_regex = re.compile(r"(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]")
+    regex_validation = re.fullmatch(domain_regex, domain)
+    return regex_validation is not None
