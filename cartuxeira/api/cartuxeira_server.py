@@ -1,5 +1,6 @@
 import json
 from flask import Flask
+from waitress import serve
 from api.blacklist.blacklist import bl_api
 from api.riskEval.risk_eval import risk_api
 from api.internal.internal_server import InternalServer
@@ -27,7 +28,7 @@ class CartuxeiraServer:
 
     # Runs CartuxeiraServer
     def run(self):
-        Flask.run(CartuxeiraServer.app, host=self.cartuxeira_server_host, port=self.cartuxeira_server_port)
+        serve(CartuxeiraServer.app, host=self.cartuxeira_server_host, port=self.cartuxeira_server_port, ident=None)
 
     # -- Post process
 

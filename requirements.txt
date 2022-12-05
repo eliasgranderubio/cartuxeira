@@ -2,3 +2,4 @@ pymongo==4.3.3
 pydnsbl==1.1.4
 dgad==4.1.1
 Flask==2.2.2
+waitress==2.1.2

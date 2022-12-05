@@ -1,0 +1,4 @@
+.git*
+bin
+db
+README.md
