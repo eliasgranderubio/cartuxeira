@@ -14,6 +14,7 @@ class CLIParser:
         self.parser.add_argument('-p', '--server_port', type=int)
         self.parser.add_argument('-m', '--mongodb_host', type=str)
         self.parser.add_argument('-mp', '--mongodb_port', type=int)
+        self.parser.add_argument('-erak', '--email_reputation_api_key', type=str)
         self.args, self.unknown = self.parser.parse_known_args(sys.argv[1:])
         # Verify command line arguments
         status = self.verify_args(self.args)
@@ -37,6 +38,9 @@ class CLIParser:
     # Gets mongodb port
     def get_mongodb_port(self):
         return self.args.mongodb_port if self.args.mongodb_port is not None else 27017
+
+    def get_email_reputation_api_key(self):
+        return self.args.email_reputation_api_key if self.args.email_reputation_api_key is not None else ''
 
     # -- Static methods
 
@@ -71,6 +75,7 @@ class CartuxeiraStartParser(argparse.ArgumentParser):
 
 start_parser_text = '''usage: cartuxeira.py [-h] [--server_host SERVER_HOST] [--server_port SERVER_PORT]
                   [--mongodb_host MONGODB_HOST] [--mongodb_port MONGODB_PORT]
+                  [--email_reputation_api_key ER_API_KEY]
 The Cartuxeira server.
 Optional Arguments:
   -h, --help            show this help message and exit
@@ -86,4 +91,6 @@ Optional Arguments:
   -mp MONGODB_PORT, --mongodb_port MONGODB_PORT
                         port where the MongoDB is listening. By default, the
                         MongoDB port is set to 27017
+  -erak ER_API_KEY, --email_reputation_api_key ER_API_KEY
+                        the https://emailrep.io API KEY
 '''

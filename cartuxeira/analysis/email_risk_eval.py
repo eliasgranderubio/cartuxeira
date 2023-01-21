@@ -2,6 +2,7 @@ from analysis.blacklist.blacklist import is_domain_blacklisted_offline
 from analysis.blacklist.blacklist import is_domain_blacklisted_online
 from analysis.dgaDetect.dga_detect import is_dga_domain
 from analysis.blacklist.blacklist import is_email_blacklisted_offline
+from analysis.emailRep.email_rep import get_email_rep
 
 
 # Evaluates email risk relying on all included modules
@@ -18,6 +19,7 @@ def get_email_risk_eval(email):
     # -- Check email
     e = {}
     e['is_in_offline_blacklist'] = is_email_blacklisted_offline(email)
+    e['reputation'] = get_email_rep(email)
 
     # -- Return
     response['domain'] = d

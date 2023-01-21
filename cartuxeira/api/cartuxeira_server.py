@@ -20,11 +20,12 @@ class CartuxeiraServer:
 
     # CartuxeiraServer Constructor
     def __init__(self, cartuxeira_server_host='127.0.0.1', cartuxeira_server_port=5000, mongodb_host='127.0.0.1',
-                 mongodb_port=27017):
+                 mongodb_port=27017, email_reputation_api_key=''):
         super(CartuxeiraServer, self).__init__()
         self.cartuxeira_server_host = cartuxeira_server_host
         self.cartuxeira_server_port = cartuxeira_server_port
         InternalServer.set_mongodb_driver(mongodb_host, mongodb_port)
+        InternalServer.set_email_reputation_api_key(email_reputation_api_key)
 
     # Runs CartuxeiraServer
     def run(self):

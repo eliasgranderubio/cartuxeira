@@ -20,16 +20,29 @@ class MongoDbDriver:
     def insert_email_to_local_black_list(self, email):
         self.db.email_local_bl.insert_one({'_id': email})
 
+    def insert_email_rep_info(self, email, info):
+        self.db.email_rep_info.insert_one({'_id': email, 'info': info})
+
     def is_domain_in_local_black_list(self, domain):
-        cursor = self.db.domain_local_bl.find({'_id': domain})
-        return len(list(cursor)) > 0
+        return self.db.domain_local_bl.count_documents({'_id': domain}) > 0
 
     def is_email_in_local_black_list(self, email):
-        cursor = self.db.email_local_bl.find({'_id': email})
-        return len(list(cursor)) > 0
+        return self.db.email_local_bl.count_documents({'_id': email}) > 0
+
+    def is_email_rep_info(self, email):
+        return self.db.email_rep_info.count_documents({'_id': email}) > 0
+
+    def get_email_rep_info(self, email):
+        if self.db.email_rep_info.count_documents({'_id': email}) == 0:
+            return {}
+        else:
+            return self.db.email_rep_info.find_one({'_id': email})['info']
 
     def delete_domain_from_local_black_list(self, domain):
         self.db.domain_local_bl.delete_one({'_id': domain})
 
     def delete_email_from_local_black_list(self, email):
         self.db.email_local_bl.delete_one({'_id': email})
+
+    def delete_email_rep_info(self, email):
+        self.db.email_rep_info.delete_one({'_id': email})
