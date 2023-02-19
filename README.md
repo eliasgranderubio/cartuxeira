@@ -1,5 +1,6 @@
 # Cartuxeira
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://github.com/eliasgranderubio/cartuxeira)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/eliasgranderubio/cartuxeira)
 
 **Cartuxeira** is a tool to perform an email risk evaluation relying on both offline and online black lists, machine learning techniques such as DGA detection or EGA detection, and using OSINT third party services.
 
