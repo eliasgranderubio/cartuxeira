@@ -1,6 +1,9 @@
 # Cartuxeira
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://github.com/eliasgranderubio/cartuxeira)
 
+**Cartuxeira** is a tool to perform an email risk evaluation relying on both offline and online black lists, machine learning techniques such as DGA detection or EGA detection, and using OSINT third party services.
+
+This kind of email risk evaluation provides a confident way to identify a phishing attack without depending on user knowledge or awareness.
 
    * [Requirements](#requirements)
      * [Installation of MongoDB](#installation-of-mongodb)
@@ -10,6 +13,7 @@
      * [Other REST API details](#other-rest-api-details)
        * [Version Prefix](#version-prefix)
        * [HTTP Status Codes](#http-status-codes)
+   * [Bonus Track: Quick Start with Docker Compose](#bonus-track--quick-start-with-docker-compose)
    * [Bugs and Feedback](#bugs-and-feedback)
 
 
@@ -194,6 +198,18 @@ The following HTTP status codes are used throughout the API.
 * `409` - Invalid request which generates a conflict with the current state of the target resource.
 * `500` - Internal server error. An internal error has occurred, try again later. If the error persists, report a bug.
 * `503` - Some **Cartuxeira** service is down. Review **Cartuxeira** logs.
+
+
+## Bonus Track: Quick Start with Docker Compose
+
+This section describes the installation of **Cartuxeira** using ```docker-compose```, including the Mongo database and the **Cartuxeira** server. 
+
+Execute the following commands in the root folder of **Cartuxeira** and then, the **Cartuxeira** server will start listening at port 5000:
+
+```bash
+    docker-compose build
+    docker-compose up -d
+```
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/eliasgranderubio/cartuxeira/issues) or ping us on Twitter ([@3grander](https://twitter.com/3grander) or [@DLTorreLand](https://twitter.com/DLTorreLand)).
