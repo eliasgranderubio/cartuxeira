@@ -1,7 +1,6 @@
 #
 # Copyright 2023 The Cartuxeira Authors.
 #
-# Licensed to Dagda under one or more contributor
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -34,10 +33,31 @@ def get_email_risk_eval(email):
 
     # -- Check email
     e = {}
+    e['is_ega'] = False  # This value is hardcoded by now
     e['is_in_offline_blacklist'] = is_email_blacklisted_offline(email)
     e['reputation'] = get_email_rep(email)
 
     # -- Return
+    response['risk_score'] = get_email_risk_score(d, e)
     response['domain'] = d
     response['email'] = e
     return response
+
+
+# Generates the email risk score: Low, Medium, High
+def get_email_risk_score(domain_info, email_info):
+    # Checks the domain info highlights
+    if domain_info['is_dga'] or domain_info['is_in_offline_blacklist'] or domain_info['is_in_online_blacklist']:
+        return "High"
+    # Checks the email info highlights
+    if email_info['is_ega'] or email_info['is_in_offline_blacklist']:
+        return "High"
+    # Checks the email reputation
+    if 'reputation' in email_info and 'reputation' in email_info['reputation']:
+        if email_info['reputation']['reputation'].lower() == 'high':
+            return "Low"
+        if email_info['reputation']['reputation'].lower() == 'n/a' or \
+           email_info['reputation']['reputation'].lower() == 'low':
+            return "High"
+    # Finally
+    return "Medium"
