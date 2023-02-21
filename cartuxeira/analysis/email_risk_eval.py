@@ -56,7 +56,7 @@ def get_email_risk_score(domain_info, email_info):
     if 'reputation' in email_info and 'reputation' in email_info['reputation']:
         if email_info['reputation']['reputation'].lower() == 'high':
             return "Low"
-        if email_info['reputation']['reputation'].lower() == 'n/a' or \
+        if email_info['reputation']['reputation'].lower() == 'none' or \
            email_info['reputation']['reputation'].lower() == 'low':
             return "High"
     # Finally
