@@ -25,10 +25,12 @@ Before **Cartuxeira** usage, you must have installed the next requirements:
 * MongoDB 6.0 or later
 * Pip3
   * PyMongo
-  * PyDNSBL
   * Flask
   * Waitress
   * Dgad
+  * TensorFlow
+  * Joblib
+  * PyDNSBL
   * EmailRep
 
 The requirements can be installed with pip:
