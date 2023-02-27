@@ -37,10 +37,10 @@ def get_email_rep(email):
 
         # Query an email address
         info = emailrep.query(email)
-        if info['status'] != 'fail':
+        if 'status' not in info or info['status'] != 'fail':
             mongo_driver.insert_email_rep_info(email, info)
 
     # Return
-    if info['status'] != 'fail':
+    if 'status' not in info or info['status'] != 'fail':
         del info["email"]
     return info

@@ -47,18 +47,15 @@ def get_email_risk_eval(email):
 
 # Generates the email risk score: Low, Medium, High
 def get_email_risk_score(domain_info, email_info):
+    # Checks the email reputation
+    if 'reputation' in email_info and 'reputation' in email_info['reputation']:
+        if email_info['reputation']['reputation'].lower() == 'high':
+            return "Low"
     # Checks the domain info highlights
     if domain_info['is_dga'] or domain_info['is_in_offline_blacklist'] or domain_info['is_in_online_blacklist']:
         return "High"
     # Checks the email info highlights
     if email_info['is_ega'] or email_info['is_in_offline_blacklist']:
         return "High"
-    # Checks the email reputation
-    if 'reputation' in email_info and 'reputation' in email_info['reputation']:
-        if email_info['reputation']['reputation'].lower() == 'high':
-            return "Low"
-        if email_info['reputation']['reputation'].lower() == 'none' or \
-           email_info['reputation']['reputation'].lower() == 'low':
-            return "High"
     # Finally
     return "Medium"
